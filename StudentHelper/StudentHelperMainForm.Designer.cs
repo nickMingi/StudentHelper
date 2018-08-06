@@ -28,49 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.top1 = new StudentHelper.Top();
-            this.side1 = new StudentHelper.Side();
-            this.bottom1 = new StudentHelper.Bottom();
-            this.maintenance1 = new StudentHelper.Maintenance();
+            this.groupBoxMainControl = new System.Windows.Forms.GroupBox();
+            this.groupBoxBottomControl = new System.Windows.Forms.GroupBox();
+            this.groupBoxTopControl = new System.Windows.Forms.GroupBox();
+            this.groupBoxSideControl = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
-            // top1
+            // groupBoxMainControl
             // 
-            this.top1.Location = new System.Drawing.Point(12, 12);
-            this.top1.Name = "top1";
-            this.top1.Size = new System.Drawing.Size(1085, 104);
-            this.top1.TabIndex = 7;
+            this.groupBoxMainControl.Location = new System.Drawing.Point(119, 122);
+            this.groupBoxMainControl.Name = "groupBoxMainControl";
+            this.groupBoxMainControl.Size = new System.Drawing.Size(978, 716);
+            this.groupBoxMainControl.TabIndex = 10;
+            this.groupBoxMainControl.TabStop = false;
+            this.groupBoxMainControl.Text = "groupBox1";
             // 
-            // side1
+            // groupBoxBottomControl
             // 
-            this.side1.Location = new System.Drawing.Point(1103, 12);
-            this.side1.Name = "side1";
-            this.side1.Size = new System.Drawing.Size(125, 936);
-            this.side1.TabIndex = 6;
+            this.groupBoxBottomControl.Location = new System.Drawing.Point(12, 844);
+            this.groupBoxBottomControl.Name = "groupBoxBottomControl";
+            this.groupBoxBottomControl.Size = new System.Drawing.Size(1085, 104);
+            this.groupBoxBottomControl.TabIndex = 15;
+            this.groupBoxBottomControl.TabStop = false;
+            this.groupBoxBottomControl.Text = "groupBox2";
             // 
-            // bottom1
+            // groupBoxTopControl
             // 
-            this.bottom1.Location = new System.Drawing.Point(12, 844);
-            this.bottom1.Name = "bottom1";
-            this.bottom1.Size = new System.Drawing.Size(1085, 104);
-            this.bottom1.TabIndex = 5;
+            this.groupBoxTopControl.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxTopControl.Name = "groupBoxTopControl";
+            this.groupBoxTopControl.Size = new System.Drawing.Size(1085, 104);
+            this.groupBoxTopControl.TabIndex = 16;
+            this.groupBoxTopControl.TabStop = false;
+            this.groupBoxTopControl.Text = "groupBox2";
             // 
-            // maintenance1
+            // groupBoxSideControl
             // 
-            this.maintenance1.Location = new System.Drawing.Point(119, 122);
-            this.maintenance1.Name = "maintenance1";
-            this.maintenance1.Size = new System.Drawing.Size(978, 716);
-            this.maintenance1.TabIndex = 8;
+            this.groupBoxSideControl.Location = new System.Drawing.Point(1103, 12);
+            this.groupBoxSideControl.Name = "groupBoxSideControl";
+            this.groupBoxSideControl.Size = new System.Drawing.Size(125, 936);
+            this.groupBoxSideControl.TabIndex = 17;
+            this.groupBoxSideControl.TabStop = false;
+            this.groupBoxSideControl.Text = "groupBox2";
             // 
             // StudentHelperMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 960);
-            this.Controls.Add(this.maintenance1);
-            this.Controls.Add(this.top1);
-            this.Controls.Add(this.side1);
-            this.Controls.Add(this.bottom1);
+            this.Controls.Add(this.groupBoxSideControl);
+            this.Controls.Add(this.groupBoxTopControl);
+            this.Controls.Add(this.groupBoxBottomControl);
+            this.Controls.Add(this.groupBoxMainControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "StudentHelperMainForm";
@@ -81,10 +89,10 @@
         }
 
         #endregion
-        private Bottom bottom1;
-        private Side side1;
-        private Top top1;
-        private Maintenance maintenance1;
+        private System.Windows.Forms.GroupBox groupBoxMainControl;
+        private System.Windows.Forms.GroupBox groupBoxBottomControl;
+        private System.Windows.Forms.GroupBox groupBoxTopControl;
+        private System.Windows.Forms.GroupBox groupBoxSideControl;
     }
 }
 

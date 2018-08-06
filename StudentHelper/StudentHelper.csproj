@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,30 +49,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bottom.cs">
+    <Compile Include="College.cs" />
+    <Compile Include="Controls\Alarm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Bottom.Designer.cs">
+    <Compile Include="Controls\Alarm.Designer.cs">
+      <DependentUpon>Alarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Bottom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Bottom.Designer.cs">
       <DependentUpon>Bottom.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfigurationMaintenance.cs">
+    <Compile Include="Controls\ConfigurationMaintenance.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ConfigurationMaintenance.Designer.cs">
+    <Compile Include="Controls\ConfigurationMaintenance.Designer.cs">
       <DependentUpon>ConfigurationMaintenance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maintenance.cs">
+    <Compile Include="Controls\Maintenance.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Maintenance.Designer.cs">
+    <Compile Include="Controls\Maintenance.Designer.cs">
       <DependentUpon>Maintenance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Side.cs">
+    <Compile Include="Controls\Side.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Side.Designer.cs">
+    <Compile Include="Controls\Side.Designer.cs">
       <DependentUpon>Side.cs</DependentUpon>
     </Compile>
+    <Compile Include="Student.cs" />
+    <Compile Include="StudentHelperCPU.cs" />
     <Compile Include="StudentHelperMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,19 +90,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Top.cs">
+    <Compile Include="Controls\Top.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Top.Designer.cs">
+    <Compile Include="Controls\Top.Designer.cs">
       <DependentUpon>Top.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Bottom.resx">
+    <EmbeddedResource Include="Controls\Alarm.resx">
+      <DependentUpon>Alarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Bottom.resx">
       <DependentUpon>Bottom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConfigurationMaintenance.resx">
+    <EmbeddedResource Include="Controls\ConfigurationMaintenance.resx">
       <DependentUpon>ConfigurationMaintenance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maintenance.resx">
+    <EmbeddedResource Include="Controls\Maintenance.resx">
       <DependentUpon>Maintenance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -101,13 +117,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Side.resx">
+    <EmbeddedResource Include="Controls\Side.resx">
       <DependentUpon>Side.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentHelperMainForm.resx">
       <DependentUpon>StudentHelperMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Top.resx">
+    <EmbeddedResource Include="Controls\Top.resx">
       <DependentUpon>Top.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
