@@ -12,36 +12,28 @@ using System.Diagnostics;
 
 namespace StudentHelper
 {
-    public partial class Top : UserControl
+    public partial class Top : CommomControls
     {
 
         #region Field
-        private StudentHelperMainForm _Owner;
 
         #endregion
 
         #region Constructor
-        public Top()
+        public Top() : base()
         {
             InitializeComponent();
             this.labelVersion.Text = Version;
         }
 
-        public Top(StudentHelperMainForm owner)
+        public Top(StudentHelperMainForm owner) : base(owner)
         {
             InitializeComponent();
-            this.Owner = owner;
             this.labelVersion.Text = Version;
         }
         #endregion
 
         #region Property
-
-        public StudentHelperMainForm Owner
-        {
-            get { return _Owner; }
-            set { _Owner = value; }
-        }
 
         #endregion
 

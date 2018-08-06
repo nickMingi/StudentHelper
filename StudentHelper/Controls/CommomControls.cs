@@ -10,40 +10,34 @@ using System.Windows.Forms;
 
 namespace StudentHelper
 {
-    public partial class Bottom : CommomControls
+    public partial class CommomControls : UserControl
     {
         #region Field
-
+        private StudentHelperMainForm _Owner;
         #endregion
 
         #region Constructor
-        public Bottom() : base()
+        public CommomControls()
         {
             InitializeComponent();
         }
-        public Bottom(StudentHelperMainForm owner) : base()
+        public CommomControls(StudentHelperMainForm owner)
         {
             InitializeComponent();
             this.Owner = owner;
         }
+
+
         #endregion
 
         #region Property
 
-
-
-        #endregion
-
-        #region Method
-        private void buttonConfiguration_Click(object sender, EventArgs e)
+        public StudentHelperMainForm Owner
         {
-            Owner.ButtonClickedForMain("Configuration");
+            get { return _Owner; }
+            set { _Owner = value; }
         }
 
-        private void buttonOperation_Click(object sender, EventArgs e)
-        {
-            Owner.ButtonClickedForMain("Operation");
-        }
         #endregion
     }
 }

@@ -14,33 +14,25 @@ using System.IO;
 
 namespace StudentHelper
 {
-    public partial class ConfigurationMaintenance : UserControl
+    public partial class ConfigurationMaintenance : CommomControls
     {
         #region Field
         private string _ConfigurationDirectory;
-        private StudentHelperMainForm _Owner;
         #endregion
 
         #region Constructor
-        public ConfigurationMaintenance()
+        public ConfigurationMaintenance() : base()
         {
             InitializeComponent();
         }
-        public ConfigurationMaintenance(StudentHelperMainForm owner)
+        public ConfigurationMaintenance(StudentHelperMainForm owner) : base(owner)
         {
             InitializeComponent();
-            this.Owner = owner;
+            
         }
         #endregion
 
         #region Property
-
-
-        public StudentHelperMainForm Owner
-        {
-            get { return _Owner; }
-            set { _Owner = value; }
-        }
 
 
         public string ConfigurationDirectory

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace StudentHelper
 {
-    public partial class Alarm : UserControl
+    public partial class Alarm : CommomControls
     {
         #region Define
         public enum ErrorList
@@ -31,23 +31,21 @@ namespace StudentHelper
         #endregion
 
         #region Field
-        private StudentHelperMainForm _Owner;
         private List<String> _AlarmName;
         private List<List<string>> _Alarms;
 
         #endregion
 
         #region Constructor
-        public Alarm()
+        public Alarm() : base()
         {
             InitializeComponent();
             AlarmName = new List<string>();
             Alarmss = new List<List<string>>();
         }
-        public Alarm(StudentHelperMainForm owner)
+        public Alarm(StudentHelperMainForm owner) : base(owner)
         {
             InitializeComponent();
-            this._Owner = owner;
             AlarmName = new List<string>();
             Alarmss = new List<List<string>>();
         }
@@ -65,12 +63,6 @@ namespace StudentHelper
         {
             get { return this._Alarms; }
             set { this._Alarms = value; }
-        }
-
-        public StudentHelperMainForm Owner
-        {
-            get { return _Owner; }
-            set { _Owner = value; }
         }
 
         #endregion

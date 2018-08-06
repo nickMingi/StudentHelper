@@ -62,6 +62,12 @@
     <Compile Include="Controls\Bottom.Designer.cs">
       <DependentUpon>Bottom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CommomControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CommomControls.Designer.cs">
+      <DependentUpon>CommomControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ConfigurationMaintenance.cs">
       <SubType>UserControl</SubType>
     </Compile>

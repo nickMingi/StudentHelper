@@ -13,7 +13,7 @@ using Newtonsoft.Json.Linq;
 namespace StudentHelper
 {
     #region Maintenance Classe
-    public partial class Maintenance : UserControl
+    public partial class Maintenance : CommomControls
     {
         #region Define
         public enum ConfigurationSelection
@@ -27,17 +27,9 @@ namespace StudentHelper
         private Student _Student;
         private College _College;
         private int _PreviousItemCal;
-        private StudentHelperMainForm _Owner;
         #endregion
 
         #region Property
-
-
-        public StudentHelperMainForm Owner
-        {
-            get { return _Owner; }
-            set { _Owner = value; }
-        }
 
         public int PreviousItemCal
         {
@@ -62,17 +54,16 @@ namespace StudentHelper
         #endregion
 
         #region Constructor
-        public Maintenance()
+        public Maintenance() : base()
         {
             InitializeComponent();
             this.Student = new Student();
             this.College = new College();
         }
 
-        public Maintenance(StudentHelperMainForm owner)
+        public Maintenance(StudentHelperMainForm owner) : base(owner)
         {
             InitializeComponent();
-            this.Owner = owner;
             this.Student = new Student();
             this.College = new College();
         }
