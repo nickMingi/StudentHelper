@@ -80,6 +80,12 @@
     <Compile Include="Controls\Maintenance.Designer.cs">
       <DependentUpon>Maintenance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Plan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Plan.Designer.cs">
+      <DependentUpon>Plan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Side.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Maintenance.resx">
       <DependentUpon>Maintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Plan.resx">
+      <DependentUpon>Plan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

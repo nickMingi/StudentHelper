@@ -27,9 +27,18 @@ namespace StudentHelper
         private Student _Student;
         private College _College;
         private int _PreviousItemCal;
+        private Plan _Plan;
         #endregion
 
         #region Property
+
+
+        public Plan Plan
+        {
+            get { return this._Plan; }
+            set { this._Plan = value; }
+        }
+
 
         public int PreviousItemCal
         {
@@ -59,6 +68,7 @@ namespace StudentHelper
             InitializeComponent();
             this.Student = new Student();
             this.College = new College();
+            this.Plan = new Plan();
         }
 
         public Maintenance(StudentHelperMainForm owner) : base(owner)
@@ -66,6 +76,7 @@ namespace StudentHelper
             InitializeComponent();
             this.Student = new Student();
             this.College = new College();
+            this.Plan = new Plan();
         }
         #endregion
 
@@ -81,36 +92,23 @@ namespace StudentHelper
                 return;
             }
 
-            string[] tempFiles = Directory.GetFiles(this.Owner.Configuration.ConfigurationDirectory,"*.json", System.IO.SearchOption.TopDirectoryOnly);
+            //Dictionary<string, JObject> jsonItems = FileReadAndSaveToJson();
+
+            string[] tempFiles = Directory.GetFiles(this.Owner.Configuration.ConfigurationDirectory, "*.json", System.IO.SearchOption.TopDirectoryOnly);
             if (tempFiles.Count() <= 0)
             {
                 MessageBox.Show("Please check directory. No Json file found.");
                 Owner.Alarm.AlarmMaker(this.ToString(), -2, "NoJsonFile");
             }
-            Dictionary<string,JObject> jsonItems = new Dictionary<string,JObject>();
+            Dictionary<string, JObject> jsonItems = new Dictionary<string, JObject>();
             jsonItems.Clear();
             foreach (string tempFile in tempFiles)
             {
-
-                 string result = string.Empty;
-                 var jobj = new JObject();
-                 using (StreamReader r = new StreamReader(tempFile))
-                 {
-                     var json = r.ReadToEnd();
-                     jobj = JObject.Parse(json);
-                     //foreach (var item in jobj.Properties())
-                     //{
-                     //    item.Value = item.Value.ToString().Replace("v1","v2");
-                     //}
-                     result = jobj.ToString();
-                     Console.WriteLine(result);
-                 }
-                 jsonItems.Add(jobj["UserConfiguration"]["UserName"].ToString(),jobj);
-
-                
+                var jobj = FileReadAndSaveToJson(tempFile);
+                jsonItems.Add(jobj["UserConfiguration"]["UserName"].ToString(), jobj);
             }
 
-            if(PreviousItemCal != jsonItems.Count)
+            if (PreviousItemCal != jsonItems.Count)
             {
                 this.comboBoxUserList.Items.Clear();
                 PreviousItemCal = jsonItems.Count;
@@ -153,8 +151,9 @@ namespace StudentHelper
                         this.labelNumberOfClassesDisplay.Text = string.Format("{0}", numberOfClasses);
                         this.labelAverageGradeDisplay.Text = Student.StudentAverageGradeCal(Student.StudentClasses);
                         ret = Student.RemainingCreditCostCalculator(this.College);
+                        ret = Student.StartSemesterCalculator();
                         this.Student.GraduationGrade = this.Student.GraduationGradeCal(this.labelAverageGradeDisplay.Text);
-
+                        this.labelStartSemester.Text = Student.StartSemester;
                     }
                 }
             }
@@ -183,6 +182,12 @@ namespace StudentHelper
                 Student.Classes classes = new Student.Classes();
                 classes.classes = jobj["UserConfiguration"]["MyClasses"][i]["Classes"].ToString();
                 classes.grades = jobj["UserConfiguration"]["MyClasses"][i]["Grades"].ToString();
+                // #mingi Exception needed
+                if (jobj["UserConfiguration"]["MyClasses"][i].Count() >= 4)
+                {
+                    classes.semester = jobj["UserConfiguration"]["MyClasses"][i]["Semester"].ToString();
+                    classes.year = jobj["UserConfiguration"]["MyClasses"][i]["Year"].ToString();
+                }
                 studentClasses.Add(classes);
             }
             Student.StudentClasses = studentClasses;
@@ -216,6 +221,7 @@ namespace StudentHelper
 
             this.textBoxRemainingCredit.Text = this.Student.RemainingCredit;
             this.textBoxRemainingCost.Text = this.Student.RemainingCost;
+            this.textBoxRemainingCourses.Text = this.Student.RemainingCourses;
             this.textBoxGraduationGrade.Text = this.Student.GraduationGrade;
 
             CompareClasses(Student, College);
@@ -261,14 +267,7 @@ namespace StudentHelper
             int ret = 0;
             FileStream fs = null;
             StreamWriter fileWriter = null;
-            SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.AddExtension = true;
-            saveFile.DefaultExt = "csv";
-            string filename = null;
-            if (saveFile.ShowDialog() == DialogResult.OK)
-            {
-                filename = saveFile.FileName;
-            }
+            string filename = FileNameSelector();
 
             try
             {

@@ -30,6 +30,7 @@
         {
             this.buttonOperation = new System.Windows.Forms.Button();
             this.buttonConfiguration = new System.Windows.Forms.Button();
+            this.buttonPlan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonOperation
@@ -52,11 +53,22 @@
             this.buttonConfiguration.UseVisualStyleBackColor = true;
             this.buttonConfiguration.Click += new System.EventHandler(this.buttonConfiguration_Click);
             // 
+            // buttonPlan
+            // 
+            this.buttonPlan.Location = new System.Drawing.Point(253, 1);
+            this.buttonPlan.Name = "buttonPlan";
+            this.buttonPlan.Size = new System.Drawing.Size(119, 100);
+            this.buttonPlan.TabIndex = 3;
+            this.buttonPlan.Text = "PLAN";
+            this.buttonPlan.UseVisualStyleBackColor = true;
+            this.buttonPlan.Click += new System.EventHandler(this.buttonPlan_Click);
+            // 
             // Bottom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Controls.Add(this.buttonPlan);
             this.Controls.Add(this.buttonConfiguration);
             this.Controls.Add(this.buttonOperation);
             this.Name = "Bottom";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Button buttonOperation;
         private System.Windows.Forms.Button buttonConfiguration;
+        private System.Windows.Forms.Button buttonPlan;
     }
 }

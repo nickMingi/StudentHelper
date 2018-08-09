@@ -32,6 +32,8 @@
             this.dataGridViewClasses = new System.Windows.Forms.DataGridView();
             this.Classes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Grades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Semester = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxYearOfGrade = new System.Windows.Forms.TextBox();
             this.labelYear = new System.Windows.Forms.Label();
             this.textBoxDegree = new System.Windows.Forms.TextBox();
@@ -51,6 +53,7 @@
             this.labelCostPer3Credits = new System.Windows.Forms.Label();
             this.buttonDirectorySelect = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonFileLoad = new System.Windows.Forms.Button();
             this.groupBoxUserConfiguration.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClasses)).BeginInit();
             this.CollegeConfiguration.SuspendLayout();
@@ -80,10 +83,12 @@
             this.dataGridViewClasses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClasses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Classes,
-            this.Grades});
+            this.Grades,
+            this.Semester,
+            this.Year});
             this.dataGridViewClasses.Location = new System.Drawing.Point(37, 154);
             this.dataGridViewClasses.Name = "dataGridViewClasses";
-            this.dataGridViewClasses.Size = new System.Drawing.Size(241, 475);
+            this.dataGridViewClasses.Size = new System.Drawing.Size(405, 475);
             this.dataGridViewClasses.TabIndex = 9;
             // 
             // Classes
@@ -95,6 +100,20 @@
             // 
             this.Grades.HeaderText = "Grades";
             this.Grades.Name = "Grades";
+            // 
+            // Semester
+            // 
+            this.Semester.FillWeight = 80F;
+            this.Semester.HeaderText = "Semester";
+            this.Semester.Name = "Semester";
+            this.Semester.Width = 80;
+            // 
+            // Year
+            // 
+            this.Year.FillWeight = 80F;
+            this.Year.HeaderText = "Year";
+            this.Year.Name = "Year";
+            this.Year.Width = 80;
             // 
             // textBoxYearOfGrade
             // 
@@ -266,11 +285,22 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
+            // buttonFileLoad
+            // 
+            this.buttonFileLoad.Location = new System.Drawing.Point(646, 650);
+            this.buttonFileLoad.Name = "buttonFileLoad";
+            this.buttonFileLoad.Size = new System.Drawing.Size(75, 45);
+            this.buttonFileLoad.TabIndex = 4;
+            this.buttonFileLoad.Text = "FILELOAD";
+            this.buttonFileLoad.UseVisualStyleBackColor = true;
+            this.buttonFileLoad.Click += new System.EventHandler(this.buttonFileLoad_Click);
+            // 
             // ConfigurationMaintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Controls.Add(this.buttonFileLoad);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.buttonDirectorySelect);
             this.Controls.Add(this.CollegeConfiguration);
@@ -301,8 +331,6 @@
         private System.Windows.Forms.TextBox textBoxYearOfGrade;
         private System.Windows.Forms.Label labelYear;
         private System.Windows.Forms.DataGridView dataGridViewClasses;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Classes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Grades;
         private System.Windows.Forms.GroupBox CollegeConfiguration;
         private System.Windows.Forms.DataGridView dataGridViewMustTakeClassesConfig;
         private System.Windows.Forms.TextBox textBoxCostCredits;
@@ -313,5 +341,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Class;
         private System.Windows.Forms.Button buttonDirectorySelect;
         private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Classes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Grades;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Semester;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Year;
+        private System.Windows.Forms.Button buttonFileLoad;
     }
 }

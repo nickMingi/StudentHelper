@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBoxResultBox = new System.Windows.Forms.GroupBox();
+            this.textBoxRemainingCourses = new System.Windows.Forms.TextBox();
+            this.labelRemainingCourses = new System.Windows.Forms.Label();
             this.textBoxGraduationGrade = new System.Windows.Forms.TextBox();
             this.labelGraduationGrade = new System.Windows.Forms.Label();
             this.textBoxRemainingCost = new System.Windows.Forms.TextBox();
@@ -56,6 +58,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelStartSemester = new System.Windows.Forms.Label();
             this.groupBoxResultBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMustTakeDisplay)).BeginInit();
             this.tableLayoutPanelUserInfo.SuspendLayout();
@@ -63,6 +67,8 @@
             // 
             // groupBoxResultBox
             // 
+            this.groupBoxResultBox.Controls.Add(this.textBoxRemainingCourses);
+            this.groupBoxResultBox.Controls.Add(this.labelRemainingCourses);
             this.groupBoxResultBox.Controls.Add(this.textBoxGraduationGrade);
             this.groupBoxResultBox.Controls.Add(this.labelGraduationGrade);
             this.groupBoxResultBox.Controls.Add(this.textBoxRemainingCost);
@@ -78,6 +84,24 @@
             this.groupBoxResultBox.TabIndex = 0;
             this.groupBoxResultBox.TabStop = false;
             this.groupBoxResultBox.Text = "ResultBox";
+            // 
+            // textBoxRemainingCourses
+            // 
+            this.textBoxRemainingCourses.Enabled = false;
+            this.textBoxRemainingCourses.Location = new System.Drawing.Point(155, 42);
+            this.textBoxRemainingCourses.Name = "textBoxRemainingCourses";
+            this.textBoxRemainingCourses.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRemainingCourses.TabIndex = 10;
+            // 
+            // labelRemainingCourses
+            // 
+            this.labelRemainingCourses.AutoSize = true;
+            this.labelRemainingCourses.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelRemainingCourses.Location = new System.Drawing.Point(19, 45);
+            this.labelRemainingCourses.Name = "labelRemainingCourses";
+            this.labelRemainingCourses.Size = new System.Drawing.Size(124, 17);
+            this.labelRemainingCourses.TabIndex = 9;
+            this.labelRemainingCourses.Text = "Remaining Course";
             // 
             // textBoxGraduationGrade
             // 
@@ -201,7 +225,7 @@
             // 
             this.labelCollegeDisplay.AutoSize = true;
             this.labelCollegeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelCollegeDisplay.Location = new System.Drawing.Point(183, 31);
+            this.labelCollegeDisplay.Location = new System.Drawing.Point(183, 36);
             this.labelCollegeDisplay.Name = "labelCollegeDisplay";
             this.labelCollegeDisplay.Size = new System.Drawing.Size(101, 17);
             this.labelCollegeDisplay.TabIndex = 3;
@@ -211,7 +235,7 @@
             // 
             this.labelDegreeDisplay.AutoSize = true;
             this.labelDegreeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelDegreeDisplay.Location = new System.Drawing.Point(183, 63);
+            this.labelDegreeDisplay.Location = new System.Drawing.Point(183, 72);
             this.labelDegreeDisplay.Name = "labelDegreeDisplay";
             this.labelDegreeDisplay.Size = new System.Drawing.Size(101, 17);
             this.labelDegreeDisplay.TabIndex = 4;
@@ -221,7 +245,7 @@
             // 
             this.labelYearOfGradeDisplay.AutoSize = true;
             this.labelYearOfGradeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelYearOfGradeDisplay.Location = new System.Drawing.Point(183, 97);
+            this.labelYearOfGradeDisplay.Location = new System.Drawing.Point(183, 107);
             this.labelYearOfGradeDisplay.Name = "labelYearOfGradeDisplay";
             this.labelYearOfGradeDisplay.Size = new System.Drawing.Size(139, 17);
             this.labelYearOfGradeDisplay.TabIndex = 5;
@@ -231,7 +255,7 @@
             // 
             this.labelNumberOfClassesDisplay.AutoSize = true;
             this.labelNumberOfClassesDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelNumberOfClassesDisplay.Location = new System.Drawing.Point(183, 134);
+            this.labelNumberOfClassesDisplay.Location = new System.Drawing.Point(183, 143);
             this.labelNumberOfClassesDisplay.Name = "labelNumberOfClassesDisplay";
             this.labelNumberOfClassesDisplay.Size = new System.Drawing.Size(168, 17);
             this.labelNumberOfClassesDisplay.TabIndex = 6;
@@ -241,7 +265,7 @@
             // 
             this.labelAverageGradeDisplay.AutoSize = true;
             this.labelAverageGradeDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.labelAverageGradeDisplay.Location = new System.Drawing.Point(183, 171);
+            this.labelAverageGradeDisplay.Location = new System.Drawing.Point(183, 180);
             this.labelAverageGradeDisplay.Name = "labelAverageGradeDisplay";
             this.labelAverageGradeDisplay.Size = new System.Drawing.Size(147, 17);
             this.labelAverageGradeDisplay.TabIndex = 7;
@@ -270,6 +294,7 @@
             this.tableLayoutPanelUserInfo.ColumnCount = 2;
             this.tableLayoutPanelUserInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelUserInfo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelUserInfo.Controls.Add(this.label7, 0, 6);
             this.tableLayoutPanelUserInfo.Controls.Add(this.labelUserNameDisplayTwo, 1, 0);
             this.tableLayoutPanelUserInfo.Controls.Add(this.labelCollegeDisplay, 1, 1);
             this.tableLayoutPanelUserInfo.Controls.Add(this.labelDegreeDisplay, 1, 2);
@@ -282,16 +307,19 @@
             this.tableLayoutPanelUserInfo.Controls.Add(this.label4, 0, 3);
             this.tableLayoutPanelUserInfo.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanelUserInfo.Controls.Add(this.label6, 0, 5);
+            this.tableLayoutPanelUserInfo.Controls.Add(this.labelStartSemester, 1, 6);
             this.tableLayoutPanelUserInfo.Location = new System.Drawing.Point(581, 79);
             this.tableLayoutPanelUserInfo.Name = "tableLayoutPanelUserInfo";
-            this.tableLayoutPanelUserInfo.RowCount = 6;
+            this.tableLayoutPanelUserInfo.RowCount = 7;
             this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.51456F));
             this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.48544F));
-            this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanelUserInfo.Size = new System.Drawing.Size(361, 208);
+            this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanelUserInfo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelUserInfo.Size = new System.Drawing.Size(361, 249);
             this.tableLayoutPanelUserInfo.TabIndex = 10;
             // 
             // label1
@@ -306,7 +334,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 31);
+            this.label2.Location = new System.Drawing.Point(3, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 9;
@@ -315,7 +343,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 63);
+            this.label3.Location = new System.Drawing.Point(3, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 10;
@@ -324,7 +352,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 97);
+            this.label4.Location = new System.Drawing.Point(3, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 11;
@@ -333,7 +361,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 134);
+            this.label5.Location = new System.Drawing.Point(3, 143);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 13);
             this.label5.TabIndex = 12;
@@ -342,11 +370,30 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 171);
+            this.label6.Location = new System.Drawing.Point(3, 180);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Average Grade";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 214);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(76, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Start Semester";
+            // 
+            // labelStartSemester
+            // 
+            this.labelStartSemester.AutoSize = true;
+            this.labelStartSemester.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelStartSemester.Location = new System.Drawing.Point(183, 214);
+            this.labelStartSemester.Name = "labelStartSemester";
+            this.labelStartSemester.Size = new System.Drawing.Size(144, 17);
+            this.labelStartSemester.TabIndex = 15;
+            this.labelStartSemester.Text = "StartSemesterDisplay";
             // 
             // Maintenance
             // 
@@ -400,5 +447,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxRemainingCourses;
+        private System.Windows.Forms.Label labelRemainingCourses;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelStartSemester;
     }
 }

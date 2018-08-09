@@ -13,7 +13,16 @@ namespace StudentHelper
         {
             public string classes;
             public string grades;
+            public string semester;
+            public string year;
         };
+
+        public enum Semesters
+        {
+            SPRING = 0,
+            SUMMER = 1,
+            FALL = 2,
+        }
         #endregion
 
         #region Field
@@ -24,11 +33,20 @@ namespace StudentHelper
         private List<Classes> _Classes;
         private string _RemainingCredit;
         private string _RemainingCost;
+        private string _RemainingCourses;
         private string _GraduationGrade;
         private List<College.Classes> _MustTakeClasses;
+        private string _StartSemester;
         #endregion
 
         #region Property
+
+
+        public string StartSemester
+        {
+            get { return _StartSemester; }
+            set { _StartSemester = value; }
+        }
 
 
         public List<College.Classes> MustTakeClasses
@@ -53,6 +71,12 @@ namespace StudentHelper
         {
             get { return this._RemainingCredit; }
             set { this._RemainingCredit = value; }
+        }
+
+        public string RemainingCourses
+        {
+            get { return this._RemainingCourses; }
+            set { this._RemainingCourses = value; }
         }
 
         public string Year
@@ -101,6 +125,54 @@ namespace StudentHelper
 
         #region Method
 
+        #region Start Semester Cal
+        public int StartSemesterCalculator()
+        {
+            int ret = 0;
+            int smallestYear = int.MaxValue;
+            int smallestSemester = int.MaxValue;
+            List<String> semesters = new List<string>();
+            Semesters semester = new Semesters();
+            foreach (var item in this.StudentClasses)
+            {
+                if (item.year != null)
+                {
+                    if (int.Parse(item.year) < smallestYear)
+                    {
+                        smallestYear = int.Parse(item.year);
+                    }
+                }
+            }
+            foreach (var item in this.StudentClasses)
+            {
+                    int value = 0;
+                if (item.year != null)
+                {
+                    if (int.Parse(item.year) == smallestYear)
+                    {
+                        switch (item.semester)
+                        {
+                            case "SPTRING":
+                                value = 0;
+                                break;
+                            case "SUMMER":
+                                value = 1;
+                                break;
+                            case "FALL":
+                                value = 2;
+                                break;
+                        }
+                        if (value < smallestSemester)
+                            smallestSemester = value;
+                    }
+                }
+            }
+            semester = (Semesters)smallestSemester;
+            StartSemester = string.Format("{0}",smallestYear) + semester.ToString();
+            return ret;
+        }
+        #endregion
+
         #region Remaining Credit and Cost
         public int RemainingCreditCostCalculator(College college)
         {
@@ -112,6 +184,7 @@ namespace StudentHelper
                 return ret = -7;
             }
             this.RemainingCredit = string.Format("{0}",remainingcredit);
+            this.RemainingCourses = string.Format("{0}", remainingcredit / 3);
 
             int remainingcost = int.Parse(college.Cost) * (remainingcredit / 3);
             if(remainingcost <= 0)

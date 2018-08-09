@@ -45,5 +45,10 @@ namespace StudentHelper
             Owner.ButtonClickedForMain("Operation");
         }
         #endregion
+
+        private void buttonPlan_Click(object sender, EventArgs e)
+        {
+            Owner.ButtonClickedForMain("Plan");
+        }
     }
 }

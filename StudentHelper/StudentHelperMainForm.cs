@@ -20,6 +20,7 @@ namespace StudentHelper
         private Top _Top;
         private Side _Side;
         private Alarm _Alarm;
+        private Plan _Plan;
 
         #endregion
 
@@ -33,6 +34,7 @@ namespace StudentHelper
             Top = new Top(this);
             Side = new Side(this);
             Alarm = new Alarm(this);
+            Plan = new Plan(this);
             this.groupBoxMainControl.Controls.Add(Configuration);
             this.groupBoxBottomControl.Controls.Add(Bottom);
             this.groupBoxTopControl.Controls.Add(Top);
@@ -40,21 +42,23 @@ namespace StudentHelper
 
             OnDisplay();
 
-            //Timer timer = new Timer();
-            //timer.Interval = 1000;
-            //timer.Start();
         }
         public StudentHelperMainForm(string caption)
         {
 
         }
-
-        //public StudentHelper Target => new StudentHelper();
         #endregion
 
         #region Property
         [DefaultValue(false)]
         public bool AllowUserClosing { get; set; }
+
+
+        public Plan Plan
+        {
+            get { return _Plan; }
+            set { _Plan = value; }
+        }
 
 
         public Alarm Alarm
@@ -124,6 +128,11 @@ namespace StudentHelper
                         check = await IntervalCal(2000);
                         Alarm.OnDisplay();
                 }
+                else if (this.groupBoxMainControl.Controls.ContainsKey("Plan"))
+                {
+                        check = await IntervalCal(2000);
+                        Plan.Display();
+                }
                 else
                 {
                         check = await IntervalCal(2000);
@@ -157,6 +166,9 @@ namespace StudentHelper
                     break;
                 case "Alarm":
                     this.groupBoxMainControl.Controls.Add(Alarm);
+                    break;
+                case "Plan":
+                    this.groupBoxMainControl.Controls.Add(Plan);
                     break;
             }
         }

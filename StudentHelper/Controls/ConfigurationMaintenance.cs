@@ -28,7 +28,7 @@ namespace StudentHelper
         public ConfigurationMaintenance(StudentHelperMainForm owner) : base(owner)
         {
             InitializeComponent();
-            
+            ConfigurationDirectory = Directory.GetCurrentDirectory();
         }
         #endregion
 
@@ -129,6 +129,12 @@ namespace StudentHelper
         #region Save Button
         private void buttonConfigurationSave_Click(object sender, EventArgs e)
         {
+            if (ConfigurationDirectory == null)
+            {
+                MessageBox.Show("json File Created Failed Directory is not selected Yet!");
+                this.Owner.Alarm.AlarmMaker(this.ToString(), -1);
+                return;
+            }
             int ret = 0;
             string contents = null;
             var json = new JObject();
@@ -137,6 +143,7 @@ namespace StudentHelper
             var jsonUserConfig = new JObject();
             var jarrayGrade = new JArray();
             var jarrayClass = new JArray();
+
 
             if ((ret = ContentsChecker(out contents)) != 0)
             {
@@ -178,6 +185,8 @@ namespace StudentHelper
                 var jsonClasses = new JObject();
                 jsonClasses.Add("Classes", this.dataGridViewClasses.Rows[i].Cells[0].Value.ToString().ToUpper());
                 jsonClasses.Add("Grades", this.dataGridViewClasses.Rows[i].Cells[1].Value.ToString().ToUpper());
+                jsonClasses.Add("Semester", this.dataGridViewClasses.Rows[i].Cells[2].Value.ToString().ToUpper());
+                jsonClasses.Add("Year", this.dataGridViewClasses.Rows[i].Cells[3].Value.ToString());
                 if ((ret = GradeChecker(out contents, this.dataGridViewClasses.Rows[i].Cells[1].Value.ToString())) != 0)
                 {
                     Owner.Alarm.AlarmMaker(this.ToString(), ret, contents);
@@ -196,13 +205,8 @@ namespace StudentHelper
             string textValue = json.ToString();
 
             
-            if (ConfigurationDirectory == null)
-            {
-                MessageBox.Show("json File Created Failed Directory is not selected Yet!");
-                this.Owner.Alarm.AlarmMaker(this.ToString(), -1);
-                return;
-            }
-            else
+            
+           
             {
                 string savePath = ConfigurationDirectory;
                 savePath +=  this.textBoxUserName.Text + ".json";
@@ -260,6 +264,48 @@ namespace StudentHelper
         }
         #endregion
 
+        #endregion
+
+        #region File Load
+        private void buttonFileLoad_Click(object sender, EventArgs e)
+        {
+            string filename = FileNameSelector();
+            var jobj = new JObject();
+            if (filename == null)
+                return;
+            jobj = FileReadAndSaveToJson(filename);
+
+            this.textBoxUserName.Text = jobj["UserConfiguration"]["UserName"].ToString();
+            this.textBoxCollege.Text = jobj["UserConfiguration"]["College"].ToString();
+            this.textBoxDegree.Text = jobj["UserConfiguration"]["Degree"].ToString();
+            this.textBoxYearOfGrade.Text = jobj["UserConfiguration"]["YearOfGrade"].ToString();
+            int numberOfClasses = jobj["UserConfiguration"]["MyClasses"].Count();
+           
+            for (int i = 0; i < numberOfClasses; i++)
+            {
+                this.dataGridViewClasses.Rows.Add();
+                this.dataGridViewClasses.Rows[i].Cells[0].Value = jobj["UserConfiguration"]["MyClasses"][i]["Classes"].ToString();
+                this.dataGridViewClasses.Rows[i].Cells[1].Value = jobj["UserConfiguration"]["MyClasses"][i]["Grades"].ToString();
+                // #mingi Exception needed
+                if (jobj["UserConfiguration"]["MyClasses"][i].Count() >= 4)
+                {
+                    this.dataGridViewClasses.Rows[i].Cells[2].Value = jobj["UserConfiguration"]["MyClasses"][i]["Semester"].ToString();
+
+                    this.dataGridViewClasses.Rows[i].Cells[3].Value = jobj["UserConfiguration"]["MyClasses"][i]["Year"].ToString();
+                }
+            }
+
+            numberOfClasses = jobj["CollegeConfiguration"]["MustTakeClasses"].Count();
+
+            for (int i = 0; i < numberOfClasses; i++)
+            {
+                this.dataGridViewMustTakeClassesConfig.Rows.Add();
+                this.dataGridViewMustTakeClassesConfig.Rows[i].Cells[0].Value = jobj["CollegeConfiguration"]["MustTakeClasses"][i]["Section"].ToString();
+                this.dataGridViewMustTakeClassesConfig.Rows[i].Cells[1].Value = jobj["CollegeConfiguration"]["MustTakeClasses"][i]["Class"].ToString();
+            }
+            this.textBoxCostCredits.Text = jobj["CollegeConfiguration"]["Cost"].ToString();
+            this.textBoxGraduationCredits.Text = jobj["CollegeConfiguration"]["GraduationCredit"].ToString();
+        }
         #endregion
     }
 }
